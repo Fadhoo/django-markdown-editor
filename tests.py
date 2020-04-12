@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Post
+from martor_demo.app.models import Post
 
 
 class PostTestCase(TestCase):
