@@ -2,30 +2,34 @@ pipeline{
 
     agent any
 
-    stages {
-
-        stage ('Compile Stage') {
+    stages {  // Define the individual processes, or stages, of your CI pipeline
         
-            steps{
-                Virtualenv Builder
+        stage('Checkout') { // Checkout (git clone ...) the projects repository
+            steps {
+                checkout scm
             }
-
         }
 
-        // stage ('Testing Stage') {
+        stage('Setup') { // Install any dependencies you need to perform testing
+            steps {
+                script {
+                    sh """
+                    pip install -r requirements.txt
+                    """
+                }
+            }    
+        }
 
-        //     steps {
-        //         Selenium
-        //     }
-        // }
+        stage ('Testing Stage') {
 
-        // stage ('Deployment Stage') {
+            steps {
+                 script {
+                sh """
+                python -m unittest discover -s tests/unit
+                """
+        }
+            }
+        }
 
-        //     steps {
-        //         withMaven(maven:'maven_3_6_3'){
-        //             sh 'mvn deploy'
-        //         }
-        //     }
-        // }
     }
 }
