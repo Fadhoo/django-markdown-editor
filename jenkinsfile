@@ -23,14 +23,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    FROM python:3
-                    ENV PYTHONUNBUFFERED 1
-                    WORKDIR /martor_demo/martor_demo/
-                    COPY requirements.txt ./
-                    RUN pip install -r requirements.txt
-                    COPY . /martor_demo/
-                    EXPOSE 8000
-                    CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"
+                    image 'python:3.9.0a5-alpine3.10'
                 }
             }
             steps {
@@ -43,12 +36,7 @@ pipeline {
     
         
         stage('Test') {
-
-            agent {
-                docker {
-                    image 'qnib/pytest' 
-                }
-            }
+            
             steps{
                 
                 // Invoke Django's tests
