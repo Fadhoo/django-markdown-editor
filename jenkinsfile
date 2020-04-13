@@ -32,20 +32,17 @@ pipeline {
     
         } 
         stage('Test') {
-
             steps{
                 
                 // Invoke Django's tests
                 sh 'source env/bin/activate && python ./manage.py test'
 
-                }
             }
+            
         }
 
         stage('Push Image') {
-
             steps{
-                
                 docker.withRegistry('https://registry.hub.docker.com', 'docker') {
                     app.push('$(env.BUILD_NUMBER)')
                     app.push('latest')
