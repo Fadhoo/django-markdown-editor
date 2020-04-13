@@ -5,7 +5,7 @@ pipeline {
              // contained within your projects repository. This image should include
              // the core runtimes and dependencies required to run the job,
              // for example Python 3.x and NPM.
-             app = docker.build("Dockerfile")
+             docker.build("Dockerfile")
          }
 
     stages{
