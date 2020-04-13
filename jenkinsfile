@@ -1,11 +1,11 @@
 pipeline {
     
     agent  {
-    //         // Run this job within a Docker container built using Dockerfile.build
-    //         // contained within your projects repository. This image should include
-    //         // the core runtimes and dependencies required to run the job,
-    //         // for example Python 3.x and NPM.
-             dockerfile { filename 'Dockerfile.build' }
+             // Run this job within a Docker container built using Dockerfile.build
+             // contained within your projects repository. This image should include
+             // the core runtimes and dependencies required to run the job,
+             // for example Python 3.x and NPM.
+             app = docker.build("Dockerfile")
          }
 
     stages{
