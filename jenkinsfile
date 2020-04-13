@@ -5,13 +5,13 @@ pipeline {
     stages{
         // If you are having issues with your project not getting updated, 
         // try uncommenting the following lines.
-        stage('Checkout'){
-            steps{
-            checkout scm
-            sh 'git submodule update --init --recursive'
+        // stage('Checkout'){
+        //     steps{
+        //     checkout scm
+        //     sh 'git submodule update --init --recursive'
 
-            }
-        }
+        //     }
+        // }
     
         stage('Update Python Modules') {
             steps{
