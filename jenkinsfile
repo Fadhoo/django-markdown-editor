@@ -1,6 +1,6 @@
 pipeline {
     
-    agent none
+    agent { dockerfile true }
     // {
              // Run this job within a Docker container built using Dockerfile.build
              // contained within your projects repository. This image should include
@@ -20,17 +20,13 @@ pipeline {
         //     }
         // }
 
-        stage('Build') {
-            agent {
-                docker {
-                    image 'python:3.9.0a5-alpine3.10'
-                }
-            }
-            steps {
-               sh 'pip install --upgrade -r requirements.txt'
+        // stage('Build') {
+            
+        //     steps {
+        //        sh 'pip install --upgrade -r requirements.txt'
 
-            }
-        }
+        //     }
+        // }
 
         
     
