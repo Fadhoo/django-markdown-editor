@@ -1,13 +1,12 @@
 pipeline {
     
-    agent any
-    //  {
+    agent  {
     //         // Run this job within a Docker container built using Dockerfile.build
     //         // contained within your projects repository. This image should include
     //         // the core runtimes and dependencies required to run the job,
     //         // for example Python 3.x and NPM.
-    //         dockerfile { filename 'Dockerfile.build' }
-    //     }
+             dockerfile { filename 'Dockerfile.build' }
+         }
 
     stages{
         // If you are having issues with your project not getting updated, 
@@ -28,7 +27,7 @@ pipeline {
                 withPythonEnv('python') {
                     // Uses the default system installation of Python
                     // Equivalent to withPythonEnv('/usr/bin/python') 
-                    sh ' pip install --upgrade -r requirements.txt'
+                    sh 'pip install --upgrade -r requirements.txt'
 
                 }
 
