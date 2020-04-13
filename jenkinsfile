@@ -1,4 +1,12 @@
 pipeline {
+    
+    agent {
+            // Run this job within a Docker container built using Dockerfile.build
+            // contained within your projects repository. This image should include
+            // the core runtimes and dependencies required to run the job,
+            // for example Python 3.x and NPM.
+            dockerfile { filename 'Dockerfile.build' }
+        }
 
     stages{
         // If you are having issues with your project not getting updated, 
@@ -11,13 +19,7 @@ pipeline {
         //     }
         // }
 
-        agent {
-            // Run this job within a Docker container built using Dockerfile.build
-            // contained within your projects repository. This image should include
-            // the core runtimes and dependencies required to run the job,
-            // for example Python 3.x and NPM.
-            dockerfile { filename 'Dockerfile.build' }
-        }
+        
     
         stage('Update Python Modules') {
             steps{
