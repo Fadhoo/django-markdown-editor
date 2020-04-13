@@ -4,3 +4,4 @@ requests
 gunicorn
 martor
 psycopg2>=2.7,<3.0
+virtualenv
