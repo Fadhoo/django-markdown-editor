@@ -1,6 +1,7 @@
 pipeline {
     
-    agent { dockerfile true }
+    agent any
+    // { dockerfile true }
     // {
              // Run this job within a Docker container built using Dockerfile.build
              // contained within your projects repository. This image should include
@@ -8,6 +9,11 @@ pipeline {
              // for example Python 3.x and NPM.
             
         //  }
+
+    environment{
+       sh"docker-compose up -d"
+    }
+    }    
 
     stages{
         // If you are having issues with your project not getting updated, 
